@@ -5,8 +5,8 @@
     <classes>
       <class name="com.Bridgelabz.qa.api.automation.RestAssured_Spotify_API_AUtomation">
         <methods>
+          <include name="Get_Users_Top_Items"/>
           <include name="getToken"/>
-          <include name="Get_Several_Shows"/>
         </methods>
       </class> <!-- com.Bridgelabz.qa.api.automation.RestAssured_Spotify_API_AUtomation -->
     </classes>
