@@ -15,6 +15,7 @@ public class RestAssured_Spotify_API_AUtomation {
 	String device_id = "4f176e862d152482e690890f51c9b9d3416f09e9";
 	String track_id = "16XEVyPh5NT31CAAqPbxQF";
 	String artist_id = "2AfmfGFbe0A0WsTYm0SDTx";
+	String album_id = "690w3h4czL3x3W3zIgEcB6";
 //	public String track_uris1="spotify:track:16XEVyPh5NT31CAAqPbxQF";
 //	public String track_uris2="spotify:track:6rkqqLPg9Lbsdh26JMqfp0";
 //	public String track_uris3="spotify:track:6ZRzF7XiZdjnQUDYIk7w7u";
@@ -23,7 +24,7 @@ public class RestAssured_Spotify_API_AUtomation {
 	
 	@BeforeTest
 	public void getToken() {
-		token = "Bearer BQA-2uciXoGjvucvL6XGsI0Z_FswNvSaBN7eKAphnH8krFh927cKcgac-FLxh19djLnrqcKDoBy3_wEAKlcLjcpW3-NZ9eyTG7QWhyQkRZaK7sefk908rFY2C-wxXWPz9GE0x-OWX32mI47eOiHJT5B4axyzOa_7gfZrjHrVLM1c0wjnnwrQNQ88rVUJkj-qzmv9Cn80moMp3RoQRoxiIijpjviPqjlCyO4nveCWTtMNALC-ovTn5SQ7Vg6yLc3l84BXSHfppfg";
+		token = "Bearer BQDUNVyfZtPUQKNhaLKrclEi3hXZzHlyt2ObVkTcHlBHwF69MVnPVTmA4Io6wBoP5-8eiOC6QKTBGLmnxU7sdub44RZzKtNp98P3Y5zFLEc0z2rpNxkrHLV7h-yGPd55BsnzCxsdpW_Y3lB4Wx1wZ1SNpWPSF5tyQxk4JW8pFar6SGsr_PJI3Q-ACw6-_BGIL1Q";
 	}
 	
 	
@@ -68,7 +69,7 @@ public class RestAssured_Spotify_API_AUtomation {
 				.header("ContentType","application/json")
 				.header("Authorization", token)
 				.queryParam("q", "Lata Mangeshkar")
-				.queryParam("type", "show")
+				.queryParam("type", "track")
 				.queryParam("market", "IN")
 				.queryParam("limit", "5")
 //				.pathParam("q", "Lata Mangeshkar")
@@ -186,24 +187,24 @@ public class RestAssured_Spotify_API_AUtomation {
 		response.then().assertThat().statusCode(200);
 	}
 	
-//	@Test (priority=10)
-//	public void Update_Playlist_Items() {
-//		Response response = RestAssured.given()
-//				.header("Accept", "application/json")
-//				.header("contentType","application/json")
-//				.header("Authorization", token)
-//				.queryParam("playlist_id", playlist_id)
-//				.queryParam("uris", "spotify:track:16XEVyPh5NT31CAAqPbxQF")
-//				.body("{\r\n"
-//						+ "  \"range_start\": 0,\r\n"
-//						+ "  \"insert_before\": 1,\r\n"
-//						+ "  \"range_length\": 2\r\n"
-//						+ "}")
-//				.when()
-//				.put("https://api.spotify.com/v1/playlists/"+playlist_id+"/tracks");
-//		response.prettyPrint();
-//		response.then().assertThat().statusCode(201);
-//	}
+	@Test (priority=10)
+	public void Update_Playlist_Items() {
+		Response response = RestAssured.given()
+				.header("Accept", "application/json")
+				.header("contentType","application/json")
+				.header("Authorization", token)
+				.queryParam("playlist_id", playlist_id)
+				.queryParam("uris", "spotify:track:1cpaDNciPGlC39qPs4RkMU")
+				.body("{\r\n"
+						+ "  \"range_start\": 0,\r\n"
+						+ "  \"insert_before\": 1,\r\n"
+						+ "  \"range_length\": 2\r\n"
+						+ "}")
+				.when()
+				.put("https://api.spotify.com/v1/playlists/"+playlist_id+"/tracks");
+		response.prettyPrint();
+		response.then().assertThat().statusCode(201);
+	}
 	
 	@Test (priority=11)
 	public void Change_Playlist_Details() {
@@ -567,8 +568,147 @@ public class RestAssured_Spotify_API_AUtomation {
 		response.then().assertThat().statusCode(200);
 	}
 	
+		//	------------------------------------ Library ----------------------------------  //
+	
+//	@Test (priority=38)
+//	public void Check_Saved_Albums() {
+//		Response response = RestAssured.given()
+//				.header("Accept","application/json")
+//				.header("ContentType","application/json")
+//				.header("Authorization", token)
+//				.queryParam("playlist_id", playlist_id)
+//				.when()
+//				.get("https://api.spotify.com/v1/me/albums/contains");
+//		response.prettyPrint();
+//		response.then().assertThat().statusCode(200);
+//	}
+	
+//	@Test (priority=39)
+//	public void Check_Users_Saved_Episodes() {
+//		Response response = RestAssured.given()
+//				.header("Accept","application/json")
+//				.header("ContentType","application/json")
+//				.header("Authorization", token)
+//				.queryParam("playlist_id", playlist_id)
+//				.when()
+//				.get("	https://api.spotify.com/v1/me/episodes/contains");
+//		response.prettyPrint();
+//		response.then().assertThat().statusCode(200);
+//	}
+	
+//	@Test (priority=40)
+//	public void CheckUsers_Saved_Shows() {
+//		Response response = RestAssured.given()
+//				.header("Accept","application/json")
+//				.header("ContentType","application/json")
+//				.header("Authorization", token)
+//				.queryParam("show_id", show_id)
+//				.when()
+//				.get("https://api.spotify.com/v1/me/shows/contains");
+//		response.prettyPrint();
+//		response.then().assertThat().statusCode(200);
+//	}
+	
+//	@Test (priority=41)
+//	public void CheckUsers_Saved_tracks() {
+//		Response response = RestAssured.given()
+//				.header("Accept","application/json")
+//				.header("ContentType","application/json")
+//				.header("Authorization", token)
+//				.queryParam("playlist_id", playlist_id)
+//				.when()
+//				.get("	https://api.spotify.com/v1/me/tracks/contains");
+//		response.prettyPrint();
+//		response.then().assertThat().statusCode(200);
+//	}
+	
+//	@Test (priority=42)
+//	public void Get_Saved_Albums() {
+//		Response response = RestAssured.given()
+//				.header("Accept","application/json")
+//				.header("ContentType","application/json")
+//				.header("Authorization", token)
+//				.queryParam("playlist_id", playlist_id)
+//				.when()
+//				.get("	https://api.spotify.com/v1/me/albums");
+//		response.prettyPrint();
+//		response.then().assertThat().statusCode(200);
+//	}
+	
+	@Test (priority=43)
+	public void Get_Users_Saved_Episodes() {
+		Response response = RestAssured.given()
+				.header("Accept","application/json")
+				.header("ContentType","application/json")
+				.header("Authorization", token)
+				.when()
+				.get("https://api.spotify.com/v1/me/episodes");
+		response.prettyPrint();
+		response.then().assertThat().statusCode(200);
+	}
+	
+	@Test (priority=44)
+	public void Get_Users_Saved_Shows() {
+		Response response = RestAssured.given()
+				.header("Accept","application/json")
+				.header("ContentType","application/json")
+				.header("Authorization", token)
+				.when()
+				.get("https://api.spotify.com/v1/me/shows");
+		response.prettyPrint();
+		response.then().assertThat().statusCode(200);
+	}
+	
+	@Test (priority=45)
+	public void Get_Users_Saved_Tracks() {
+		Response response = RestAssured.given()
+				.header("Accept","application/json")
+				.header("ContentType","application/json")
+				.header("Authorization", token)
+				.when()
+				.get("	https://api.spotify.com/v1/me/tracks");
+		response.prettyPrint();
+		response.then().assertThat().statusCode(200);
+	}
 	
 	
+								//	--------------------------- Albums ---------------------//
+	@Test (priority=46)
+	public void Get_Album_Tracks() {
+		Response response = RestAssured.given()
+				.header("Accept","application/json")
+				.header("ContentType","application/json")
+				.header("Authorization", token)
+				.when()
+				.get("https://api.spotify.com/v1/albums/"+album_id+"/tracks");
+		response.prettyPrint();
+		response.then().assertThat().statusCode(200);
+	}
+	
+	@Test (priority=47)
+	public void Get_Album() {
+		Response response = RestAssured.given()
+				.header("Accept","application/json")
+				.header("ContentType","application/json")
+				.header("Authorization", token)
+				.when()
+				.get("	https://api.spotify.com/v1/albums/"+album_id+"/");
+		response.prettyPrint();
+		response.then().assertThat().statusCode(200);
+	}
+	
+//	@Test (priority=48)
+//	public void Get_Several_Albums() {
+//		Response response = RestAssured.given()
+//				.header("Accept","application/json")
+//				.header("ContentType","application/json")
+//				.header("Authorization", token)
+//				.queryParam("album_id", album_id)
+//				.when()
+//				.get("	https://api.spotify.com/v1/albums");
+//		response.prettyPrint();
+//		response.then().assertThat().statusCode(200);
+//	}
 	
 	
 }

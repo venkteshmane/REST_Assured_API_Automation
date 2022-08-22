@@ -5,8 +5,18 @@
     <classes>
       <class name="com.Bridgelabz.qa.api.automation.RestAssured_Spotify_API_AUtomation">
         <methods>
-          <include name="Get_Users_Top_Items"/>
+          <include name="Add_Items_to_Playlist"/>
+          <include name="Change_Playlist_Details"/>
+          <include name="Create_Playlist"/>
+          <include name="Get_Playlist_Cover_Image"/>
+          <include name="Get_Playlist"/>
+          <include name="Update_Playlist_Items"/>
           <include name="getToken"/>
+          <include name="Get_Users_Saved_Shows"/>
+          <include name="Get_Users_Saved_Tracks"/>
+          <include name="Get_Users_Saved_Episodes"/>
+          <include name="Remove_Playlist_Items"/>
+          <include name="Get__Playlist_Items"/>
         </methods>
       </class> <!-- com.Bridgelabz.qa.api.automation.RestAssured_Spotify_API_AUtomation -->
     </classes>
